@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="MainScene" extends="Scene"> 
+    <script type="text/brightscript" uri="MainScene.brs"/>
+     <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+
+    <interface>
+        <field id="exitApp" type="boolean" value="False" alwaysNotify="true"/>
+    </interface>
+
+
+    <children>
+    
+          <!-- loading Indicator I case of waiting for content -->
+        <BusySpinner
+            id="busySpinner"
+            clockwise="true"
+            visible= "false"
+        
+        />
+
+    </children>
+	
+</component>

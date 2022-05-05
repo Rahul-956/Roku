@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="menu" extends="group" > 
+    <script type="text/brightscript" uri="Menu.brs" />
+
+    <interface>
+       <field id="downMenuClick" type="bool" alwaysNotify="true"/>
+       <field id="selectedTab" type="string" />
+    </interface>
+    
+
+    <children>
+        
+     <LayoutGroup 
+      id="layoutTag" 
+      layoutDirection="horiz" 
+      itemSpacings="[20]"
+		  translation="[200,100]" 
+      >
+
+         <Rectangle 
+          id="homeTab"
+          color = "00FFFFFF" 
+          height = "40" 
+          width = "100"> 
+
+          <Label id="homeBtn" 
+                text="Home"
+                width="100" 
+                height="50"
+                horizAlign = "center"
+                vertAlign = "center"
+                wrap="true"
+                />
+
+        </Rectangle>
+        <Rectangle 
+          id="movieTab"
+          color = "00FFFFFF" 
+          height = "40" 
+          width = "100"> 
+
+          <Label id="MoviesBtn" 
+                text="Movies"
+                width="100" 
+                height="50"
+                horizAlign = "center"
+                vertAlign = "center"
+                wrap="true"
+                />
+
+        </Rectangle>
+        <Rectangle 
+          id="shortsTab"
+          color = "00FFFFFF" 
+          height = "40" 
+          width = "100"> 
+
+          <Label id="ShortsBtn" 
+                text="Shorts"
+                width="100" 
+                height="50"
+                horizAlign = "center"
+                vertAlign = "center"
+                wrap="true"
+                />
+
+        </Rectangle>
+		</LayoutGroup>
+
+    </children>
+        
+
+</component>

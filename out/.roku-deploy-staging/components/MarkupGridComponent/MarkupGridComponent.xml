@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="MarkupGridItem" extends="group">
+    <script type="text/brightscript" uri="MarkupGridComponent.brs" />
+
+<interface> 
+    <field id = "itemContent" type = "node" onChange = "OnContentSet"/>
+   
+  </interface>
+
+<children>
+    
+     <Poster
+            id="poster"
+            loadDisplayMode="scaleToFIt"
+            width="320"
+            height="180"
+            loadWidth="320"
+            loadHeight="180"
+        />
+        <Label 
+        
+            id="title" 
+            width="320" 
+            wrap="true" 
+            color="#e6e600"
+            translation="[0,180]"
+            horizAlign = "center"
+            vertAlign = "center"/>
+    
+</children>
+    
+</component>

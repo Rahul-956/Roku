@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="BaseScreen" extends="Group" initialFocus="rowList"> 
+    <script type="text/brightscript" uri="BaseScreen.brs"/>
+         <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+   
+    <interface>
+        <!-- Specifies the content of the grid -->
+        <field id="content" type="node" alias="RowList.content"/>
+        <field id="rowItemSelected" type="intarray" alwaysNotify="true" alias="RowList.rowItemSelected" />
+        <field id="jumpToRow" type="intarray" alias="RowList.jumpToRowItem"/>
+        <field id="downClick" type="bool" onChange="downClicked" alwaysNotify="true"/>
+    </interface>
+    <children>
+    
+    
+        <RowList 
+        itemComponentName="RowListItemComponent" 
+        id="rowList"
+        translation="[80,250]"
+        numRows="2"
+        rowItemSize="[[320,180]]"
+        rowItemSpacing="[[20,0]]"
+        itemSize="[1100,270]"
+        rowLabelOffset="[[50,20]]"
+        focusXoffset="[50]"
+        showRowLabel="[true]"
+        rowFocusAnimationStyle="floatingfocus"
+    />
+    </children> 
+
+    
+
+    
+</component>
+    
+	

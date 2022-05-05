@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="MovieScreen" extends="group" initialFocus="markupgriditem" >
+    <script type="text/brightscript" uri="Moviescreen.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+<interface>
+    <field id="content" type="node" alias="MarkupGrid.content"/> 
+   <field id="itemSelected" type="intarray" alwaysNotify="true" alias="MarkupGrid.itemSelected" />
+   
+   <field id="spinnervisibility" type="boolean" alias="loadingIcon.visible" />
+    <field id="downClick" type="bool" onChange="downClicked" alwaysNotify="true"/> 
+</interface>
+
+
+<children>  
+
+     <MarkupGrid 
+      id = "MarkupGrid" 
+      translation = "[80, 250]" 
+      itemComponentName = "markupgriditem" 
+      numColumns = "3" 
+      numRows = "5" 
+      itemSize="[320,180]" 
+      itemSpacing = "[ 50, 40]" 
+      vertFocusAnimationStyle="fixedFocus" 
+      rowFocusAnimationStyle="fixedfocus"
+      
+      />
+
+      <BusySpinner 
+       id="loadingIcon"
+       clockwise="true" 
+       visible="true">
+       </BusySpinner>
+
+
+</children>
+
+    
+</component>
