@@ -159,7 +159,7 @@ sub CloseScreen(node as Object)
         if m.screenStack.Count() <=1
             m.menu.visible="true"
             ?"Navigation visible"
-          end if
+        end if
     end if
 end sub
 
@@ -281,17 +281,14 @@ end sub
 
 sub ShowVideoScreen(content as Object, itemIndex as Integer)
     m.videoPlayer = CreateObject("roSGNode", "Video") ' create new instance of video node for each playback
-    m.videoPlayer.url = content.url
-
-    m.videoPlayer.title = content.title
-
-    m.videoPlayer.streamformat = content.videoType
-    m.videoPlayer.content = content
+    children=content.GetChild(itemIndex)
+    m.videoPlayer.content = children
     ?"content--------------"m.videoPlayer.content
    ShowScreen(m.videoPlayer) ' show video screen
    m.videoPlayer.control = "play" ' start playback
    ?"Video Player state-------"m.videoPlayer.state
    m.videoPlayer.ObserveField("state", "OnVideoPlayerStateChange")
+   m.videoPlayer.ObserveField("visible", "OnVideoVisibleChange")
   
 end sub
 
@@ -304,6 +301,18 @@ sub OnVideoPlayerStateChange() ' invoked when video state is changed
        ?"Video Player Closed"
    end if
 end sub
+
+sub OnVideoVisibleChange() ' invoked when video node visibility is changed
+    if m.videoPlayer.visible = false and m.top.visible = true
+        ' the index of the video in the video playlist that is currently playing.
+        currentIndex = m.videoPlayer.contentIndex
+        m.videoPlayer.control = "stop" ' stop playback
+        'clear video player content, for proper start of next video player
+        m.videoPlayer.content = invalid
+        screen=GetCurrentScreen()' return focus to grid screen
+        ' navigate to the last played item
+    end if
+ end sub
 
 '----------------------------------------Menu Logic------------------------------------------------------------
 
