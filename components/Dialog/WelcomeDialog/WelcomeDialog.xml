@@ -3,13 +3,13 @@
 <component name="WelcomeDialog" extends="StandardDialog" initialFocus="buttonArea" >
 <script type="text/brightscript" uri="WelcomeDialog.brs" />
 <children>
-  <StdDlgTitleArea primaryTitle="Glamour Shot Side Card" />
+  <StdDlgTitleArea primaryTitle="Welcome to My First ROKU Channel" />
   <StdDlgContentArea>
      <StdDlgTextItem text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sapien massa, efficitur a accumsan a, commodo eget justo. In id ante elementum, posuere diam quis, lobortis magna." />
   </StdDlgContentArea>
   <StdDlgButtonArea id="buttonArea" >
-    <StdDlgButton text="OK" />
-    <StdDlgButton text="Cancel" />
+    <StdDlgButton text="Continue"/>
+    <StdDlgButton text="Exit" />
   </StdDlgButtonArea>
   
 </children>

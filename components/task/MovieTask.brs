@@ -6,7 +6,7 @@ sub getcontent()
     content = createObject("roSGNode", "ContentNode")
     xerf = createObject("roUrlTransfer")
     xerf.SetCertificatesFile("common:/certs/ca-bundle.crt")
-    xerf.setUrl("https://624820b4229b222a3fd48c7e.mockapi.io/GetAllMovies")
+    xerf.setUrl("https://6274a50b345e1821b22dd487.mockapi.io/Allmovies")
     contentData=parseJSON(xerf.GetToString())
 
     if contentData<>invalid

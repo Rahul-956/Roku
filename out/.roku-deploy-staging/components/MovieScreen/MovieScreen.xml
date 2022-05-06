@@ -20,7 +20,7 @@
       numColumns = "3" 
       numRows = "5" 
       itemSize="[320,180]" 
-      itemSpacing = "[ 50, 40]" 
+      itemSpacing = "[ 50, 60]" 
       vertFocusAnimationStyle="fixedFocus" 
       rowFocusAnimationStyle="fixedfocus"
       

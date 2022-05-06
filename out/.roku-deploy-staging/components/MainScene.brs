@@ -6,15 +6,14 @@ sub Init()
     m.busyspinner = m.top.findNode("busySpinner")
     m.busyspinner.poster.observeField("loadStatus", "showspinner")
     m.busyspinner.poster.uri = "pkg:/images/busyspinner_hd.png"
-    ' ShowWelcomeDialog()
-    setMenuList()
-    
-    m.focusedMenu="home"
+    ShowWelcomeDialog()
+    ' setMenuList()
+        
+    ' m.focusedMenu="home"
 
-    InitScreenStack()
-    ShowBaseScreen()
-    RunContentTask() 'retrieving content
-   
+    ' InitScreenStack()
+    ' ShowBaseScreen()
+    ' RunContentTask()
 end sub
 
 
@@ -117,7 +116,33 @@ function OnKeyEvent(Key as String, press as Boolean) as Boolean
      return result
 
 end function
+'--------------------------------------------Welcome Dialog---------------------------------------------------
 
+sub ShowWelcomeDialog()
+    m.WelcomeDialog=createObject("rosgnode","WelcomeDialog")
+    m.top.appendChild(m.WelcomeDialog)
+    m.WelcomeDialog.observeField("buttonSelected", "WelcomeDalogSelected")
+    m.WelcomeDialog.setFocus(true)
+end sub
+
+sub WelcomeDalogSelected(event as object)
+    ?"event---------"event.getData()
+    index=event.getData()
+    if index=0
+        setMenuList()
+        
+        m.focusedMenu="home"
+
+        InitScreenStack()
+        ShowBaseScreen()
+        RunContentTask() 'retrieving content
+        m.top.RemoveChild(m.WelcomeDialog)
+    
+    else if index=1
+        m.top.RemoveChild(m.WelcomeDialog)
+        m.top.exitApp=true
+    end if
+end sub
 
 '----------------------------------------ScreeenStack-------------------------------------------------------------
 sub InitScreenStack()
@@ -159,7 +184,7 @@ sub CloseScreen(node as Object)
         if m.screenStack.Count() <=1
             m.menu.visible="true"
             ?"Navigation visible"
-        end if
+          end if
     end if
 end sub
 
@@ -281,8 +306,8 @@ end sub
 
 sub ShowVideoScreen(content as Object, itemIndex as Integer)
     m.videoPlayer = CreateObject("roSGNode", "Video") ' create new instance of video node for each playback
-    children=content.GetChild(itemIndex)
-    m.videoPlayer.content = children
+    videoContent=content.GetChild(itemIndex)
+    m.videoPlayer.content=videoContent
     ?"content--------------"m.videoPlayer.content
    ShowScreen(m.videoPlayer) ' show video screen
    m.videoPlayer.control = "play" ' start playback
@@ -313,7 +338,6 @@ sub OnVideoVisibleChange() ' invoked when video node visibility is changed
         ' navigate to the last played item
     end if
  end sub
-
 '----------------------------------------Menu Logic------------------------------------------------------------
 
 sub setMenuList()
@@ -364,10 +388,3 @@ sub onSelectedTab(node as Object)
       end if
     end if
 end sub
-
-'--------------------------------------------Welcome Dialog---------------------------------------------------
-
-' sub ShowWelcomeDialog()
-'     m.WelcomeDialog=createObject("rosgnode","WelcomeDialog")
-'     m.Top.appendChild(m.WelcomeDialog)
-' end sub
